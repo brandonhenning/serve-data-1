@@ -1,26 +1,30 @@
 const express = require('express')
 const cors = require('cors')
+const port = process.env.PORT || 3000
+
+const app = express()
+app.use(cors())
 
 let cohorts = [{
     id: 1,
-    CohortName: '17-01-WD-DP',
-    CohortCode: 'g100',
-    NumberOfStudents: 28
+    cohortName: '17-01-WD-DP',
+    cohortCode: 'g100',
+    numberOfStudents: 28
 }, {
     id: 2,
-    CohortName: '17-01-DS-GT',
-    CohortCode: 'g105',
-    NumberOfStudents: 24
+    cohortName: '17-01-DS-GT',
+    cohortCode: 'g105',
+    numberOfStudents: 24
 }, {
     id: 3,
-    CohortName: '17-02-WD-PX',
-    CohortCode: 'g109',
-    NumberOfStudents: 30
+    cohortName: '17-02-WD-PX',
+    cohortCode: 'g109',
+    numberOfStudents: 30
 }, {
     id: 4,
-    CohortName: '17-03-WD-BD',
-    CohortCode: 'g110',
-    NumberOfStudents: 29
+    cohortName: '17-03-WD-BD',
+    cohortCode: 'g110',
+    numberOfStudents: 29
 }]
 
 function findById (data, id) {
@@ -31,10 +35,6 @@ function findById (data, id) {
     }
     return null
 }
-
-
-const app = express()
-app.use(cors())
 
 app.get('/', function (request, response) {
     response.json({data: cohorts})
@@ -54,4 +54,4 @@ app.get('/:id', function (request, response) {
 })
 
 
-app.listen(9000)
+app.listen(port)
